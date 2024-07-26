@@ -52,3 +52,8 @@ Content-Type: application/json
   "cpf": "123.456.789-00"
 }
 
+###
+
+GET /participante HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
