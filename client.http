@@ -1,10 +1,5 @@
 #---------------------------------------------
 # Endpoints Item de leilão
-### Busca todos os itens de leilão
-
-GET /itemdeleilao HTTP/1.1
-Host: localhost:8080
-Content-Type: application/json
 
 ### Cria um item de leilão
 POST /itemdeleilao HTTP/1.1
@@ -12,10 +7,20 @@ Host: localhost:8080
 Content-Type: application/json
 
 {
-  "nome": "Cadeira",
-  "valorMinimo": 100,
+  "nome": "Cadeira gamer",
+  "valorMinimo": 300.0,
   "leilaoAberto": true
 }
+
+### Busca por um item de leilão especifico
+GET /itemdeleilao/1 HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+### Busca por todos os itens de leilão
+GET /itemdeleilao HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
 
 ### Atualiza um item de leilão
 PUT /itemdeleilao/2 HTTP/1.1
@@ -23,26 +28,28 @@ Host: localhost:8080
 Content-Type: application/json
 
 {
-  "nome": "Cadeira de madeira",
-  "valorMinimo": 100,
+  "nome": "Cadeira gamer vermelha",
+  "valorMinimo": 300.0,
   "leilaoAberto": true
 }
 
-### Registra um lance
-POST /itemdeleilao/1 HTTP/1.1
+### Exclui um item de leilao
+DELETE /itemdeleilao/2 HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+### Finaliza o leilão
+PATCH /itemdeleilao/1 HTTP/1.1
 Host: localhost:8080
 Content-Type: application/json
 
 {
-  "valor": 400,
-  "participante": {
-    "id": 1
-  }
+  "leilaoAberto": false
 }
 
 #---------------------------------------------
 # Endpoints Participante
-###
+### Cria um novo participante
 POST /participante HTTP/1.1
 Host: localhost:8080
 Content-Type: application/json
@@ -52,7 +59,70 @@ Content-Type: application/json
   "cpf": "123.456.789-00"
 }
 
+### Busca por um participante especifico
+GET /participante/1 HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
 
-GET /participante HTTP/1.1
+### Atualiza um participante
+PUT /participante/2 HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+  "nome": "Edson Angoti Jr",
+  "cpf": "123.456.789-00"
+}
+
+### Exclui um participante
+DELETE /participante/1 HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+#---------------------------------------------
+# Endpoints Lance
+### Registra um lance
+POST /itemdeleilao/2 HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+  "valor": 350.0,
+  "participante": {
+    "id": 1
+  }
+}
+
+### Registra um lance
+POST /itemdeleilao/2 HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+  "valor": 400.0,
+  "participante": {
+    "id": 2
+  }
+}
+
+### Busca todos os lances 
+GET /lance HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+### Atualiza um lance
+PUT /lance/1 HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+  "valor": 450.0,
+  "participante": {
+    "id": 2
+  }
+}
+
+### Exclui um lance
+DELETE /lance/1 HTTP/1.1
 Host: localhost:8080
 Content-Type: application/json
