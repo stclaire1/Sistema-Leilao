@@ -3,7 +3,6 @@ package iftm.edu.br.leilao.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import iftm.edu.br.leilao.model.ItemDeLeilao;
@@ -43,7 +42,7 @@ public class ItemDeLeilaoService {
     }
 
     public List<ItemDeLeilao> itens() {
-        List<ItemDeLeilao> listaItens = new ArrayList<ItemDeLeilao>();
+        List<ItemDeLeilao> listaItens = new ArrayList<>();
         repository.findAll().forEach(p -> listaItens.add(null));
         return listaItens;
     }
