@@ -13,11 +13,14 @@ import iftm.edu.br.leilao.repository.ItemDeLeilaoRepository;
 @Service
 public class ItemDeLeilaoService {
 
-    @Autowired
-    private ItemDeLeilaoRepository repository;
+    private final ItemDeLeilaoRepository repository;
 
-    @Autowired
-    private LanceService lanceService;
+    private final LanceService lanceService;
+
+    public ItemDeLeilaoService(ItemDeLeilaoRepository repository, LanceService lanceService) {
+        this.repository = repository;
+        this.lanceService = lanceService;
+    }
 
     public void delete(Long id) {
         repository.deleteById(id);
