@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import iftm.edu.br.leilao.model.ItemDeLeilao;
 import iftm.edu.br.leilao.model.Lance;
-import iftm.edu.br.leilao.model.Participante;
 import iftm.edu.br.leilao.repository.ItemDeLeilaoRepository;
 
 @Service
